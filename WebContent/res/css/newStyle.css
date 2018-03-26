@@ -1,0 +1,32 @@
+@charset "UTF-8";
+input:-webkit-autofill{-web-box-shadow:0 0 0 1000px #FFF inset !important;}
+
+.classTable tr th{background-color:#DDD; padding-left:15px !important;}
+.classTable tr td a{padding:10px 25px; }
+
+.productsShow .thumbnail{}
+.productsShow .thumbnail img{width:100%; height:auto;}
+.productsShow .caption h3{color:#e4393c;}
+
+.productsShow .caption p{
+	height:38px;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box; /** 将对象作为伸缩盒子模型显示 **/
+    -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+    -webkit-line-clamp: 2; /** 显示的行数 **/
+    overflow: hidden;  /** 隐藏超出的内容 **/
+}
+.productsShow .caption p a{color:#666;}
+.priceCol .price{color:#e4393c;}   
+.productInfoBtnCol{text-align:center; }
+.productInfoInt{
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box; /** 将对象作为伸缩盒子模型显示 **/
+    -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+    -webkit-line-clamp: 2; /** 显示的行数 **/
+    overflow: hidden;  /** 隐藏超出的内容 **/
+}
+
+.listBorder{border-style: solid; border-width: 2px 1px 1px; _border-width: 1px; border-color: #aaa #f1f1f1 #f1f1f1; background: #fff; margin-bottom:20px;}
