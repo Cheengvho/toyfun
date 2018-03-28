@@ -71,7 +71,7 @@ public class ProductDaoImpl implements ProductDao {
 	public boolean UpdateProduct(Product product) {
 		int i = 0;
 		boolean succeed = false;
-		String sql = "update product set name=?,old_price=?,now_price=?,p_image=?,p_description=?,discount=?,p_time=?,c_id=? where id=?";
+		String sql = "update product set p_name=?,old_price=?,now_price=?,p_image=?,p_description=?,discount=?,p_time=?,c_id=? where p_id=?";
 
 		// 我要获取当前的日期
 		Date date = new Date();
@@ -104,22 +104,20 @@ public class ProductDaoImpl implements ProductDao {
 		} finally {
 			Conn.release(conn);
 			Conn.release(pstmt);
-			Conn.release(rs);
 		}
 		return succeed;
 	}
 
 	// 通过商品ID删除商品
 	@Override
-	public boolean DeleteProduct(int id) {
+	public boolean DeleteProduct(int p_id) {
 		int i = 0;
 		boolean succeed = false;
-		String sql = "delete from goods where id=?";
+		String sql = "delete from product where p_id="+p_id;
 
 		try {
 			conn = Conn.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, id);
 			i = pstmt.executeUpdate();
 			if (i > 0) {
 				succeed = true;
@@ -129,9 +127,7 @@ public class ProductDaoImpl implements ProductDao {
 		} finally {
 			Conn.release(conn);
 			Conn.release(pstmt);
-			Conn.release(rs);
 		}
-
 		return succeed;
 	}
 

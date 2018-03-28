@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@include file="adminhead.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,20 +13,24 @@ body {
 </style>
 </head>
 <body>
-	<h2>用户管理</h2>
-	<form action="UpdateUserInfo.jsp" method="post">
-		<table>
+	<h2>修改用户信息-${usertemp.username }</h2>
+	<form action="UpdateUserInfo" method="post">
+		<table class="table table-default table-hover">
 			<tr>
 				<th>ID</th>
 				<td>${usertemp.id }</td>
 			</tr>
+			<tr class="hidden">
+				<th>用户名</th>
+				<td><input type="text" name="u_username" value="${usertemp.username }" ></td>
+			</tr>
 			<tr>
 				<th>用户名</th>
-				<td><input type="text" name="u_username" value="${usertemp.username }" disabled="disabled"></td>
+				<td><input type="text" value="${usertemp.username }" disabled="disabled"></td>
 			</tr>
 			<tr>
 				<th>密码操作</th>
-				<td><a href="UpdatePassword.jsp?username=" ${usertemp.username }>修改密码</a></td>
+				<td><a href="UpdatePassword.jsp?username=${usertemp.username }" >修改密码</a></td>
 			</tr>
 			<tr>
 				<th>姓名</th>
@@ -33,27 +38,27 @@ body {
 			</tr>
 			<tr>
 				<th>邮箱</th>
-				<td><input type="text" name="u_email" value="">${usertemp.email }</td>
+				<td><input type="text" name="u_email" value="${usertemp.email }"></td>
 			</tr>
 			<tr>
 				<th>电话</th>
-				<td><input type="text" name="u_phone" value="">${usertemp.phone }</td>
+				<td><input type="text" name="u_phone" value="${usertemp.phone }"></td>
 			</tr>
 			<tr>
 				<th>城市</th>
-				<td><input type="text" name="u_city" value="">${usertemp.city }</td>
+				<td><input type="text" name="u_city" value="${usertemp.city }"></td>
 			</tr>
 			<tr>
 				<th>地址</th>
-				<td><input type="text" name="u_address" value="">${usertemp.address }</td>
+				<td><input type="text" name="u_address" value="${usertemp.address }"></td>
 			</tr>
 			<tr>
 				<th>邮编</th>
-				<td><input type="text" name="u_poscode" value="">${usertemp.poscode }</td>
+				<td><input type="text" name="u_poscode" value="${usertemp.poscode }"></td>
 			</tr>
 			<tr>
 				<th>头像</th>
-				<td><img src="${usertemp.img }" /></td>
+				<td><img src="${usertemp.img }" style="width:60px; height:60px;" /></td>
 			</tr>
 			<tr>
 				<th>操作</th>

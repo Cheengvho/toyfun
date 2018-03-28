@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.cheen.daoimpl.UserDaoImpl;
+import cn.cheen.daomain.User;
+
 /**
  * Servlet implementation class UpdatePassword
  */
@@ -26,7 +29,11 @@ public class UpdatePassword extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String newpassword = request.getParameter("newpassword");
+		String username = request.getParameter("username");
+		UserDaoImpl dao = new UserDaoImpl();
+		User user = dao.FindUserByUsername(username);
+		request.setAttribute("upuser", user);
+		request.getRequestDispatcher("/admin/updatePassword.jsp").forward(request, response);
 		
 	}
 

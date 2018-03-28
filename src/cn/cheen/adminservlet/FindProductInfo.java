@@ -1,26 +1,28 @@
 package cn.cheen.adminservlet;
 
 import java.io.IOException;
+import java.util.Collection;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.cheen.daoimpl.UserDaoImpl;
-import cn.cheen.daomain.User;
+import cn.cheen.daoimpl.ProductDaoImpl;
+import cn.cheen.daomain.Product;
 
 /**
- * Servlet implementation class FindUser
+ * Servlet implementation class FindProductInfo
  */
-@WebServlet("/FindUserInfo.jsp")
-public class FindUserInfo extends HttpServlet {
+@WebServlet("/FindProductInfo")
+public class FindProductInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FindUserInfo() {
+    public FindProductInfo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,12 +31,13 @@ public class FindUserInfo extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
-		UserDaoImpl dao = new UserDaoImpl();
-		User user = dao.FindUserByUsername(username);
-		request.setAttribute("usertemp", user);
-		request.getRequestDispatcher("/admin/updateUserInfo.jsp").forward(request, response);;
-		
+		int id = Integer.parseInt(request.getParameter("p_id"));
+		ProductDaoImpl dao = new ProductDaoImpl();
+		String name = "";
+		int c_id  = 0;
+		Collection<Product> product = dao.select(id, name, c_id);
+		request.setAttribute("upproduct", product);
+		request.getRequestDispatcher("/admin/updateProductInfo.jsp").forward(request, response);;
 	}
 
 	/**

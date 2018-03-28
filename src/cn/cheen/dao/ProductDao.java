@@ -13,7 +13,7 @@ public interface ProductDao {
 //	更新产品
 	public boolean UpdateProduct(Product product);
 //	删除产品
-	public boolean DeleteProduct(int id);
+	public boolean DeleteProduct(int p_id);
 //	按id，产品名，分类ID查询产品
 	public Collection<Product> select(int id,String name,int c_id);
 //	查询商品详情图

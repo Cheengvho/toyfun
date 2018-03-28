@@ -1,0 +1,5 @@
+@charset "UTF-8";
+
+ul{list-style-type:none;}
+.navspan li{float:left; line-height:40px;}
+.navspan li a{display:block; padding:5px;}

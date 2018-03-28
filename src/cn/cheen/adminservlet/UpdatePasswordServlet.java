@@ -10,19 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.cheen.daoimpl.UserDaoImpl;
-import cn.cheen.daomain.User;
 
 /**
- * Servlet implementation class UpdateUserInfo
+ * Servlet implementation class UpdatePasswordServlet
  */
-@WebServlet("/UpdateUserInfo")
-public class UpdateUserInfo extends HttpServlet {
+@WebServlet("/UpdatePasswordServlet")
+public class UpdatePasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateUserInfo() {
+    public UpdatePasswordServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,30 +31,14 @@ public class UpdateUserInfo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		String username = request.getParameter("u_username");
-//		System.out.println(username);
-		String name = request.getParameter("u_name");
-		String email = request.getParameter("u_email");
-		String phone = request.getParameter("u_phone");
-		String city = request.getParameter("u_city");
-		String address = request.getParameter("u_address");
-		String poscode = request.getParameter("u_poscode");
-		User user = new User();
-		user.setUsername(username);
-		user.setName(name);
-		user.setEmail(email);
-		user.setPhone(phone);
-		user.setCity(city);
-		user.setAddress(address);
-		user.setPoscode(poscode);
+		String username = request.getParameter("username");
+		String newpassword = request.getParameter("newpassword");
 		UserDaoImpl dao = new UserDaoImpl();
-		boolean succeed = dao.UpdateUserByUsername(user);
-		if(succeed) {
-			out.println("Update User Info Succeed");
-		} else {
-			out.println("Update User Info Failed");
-		}
-		
+		boolean succeed = dao.UpdatePasswordByAdmin(username, newpassword);
+		if(succeed)
+			out.print("Modify Password Succeed");
+		else
+			out.println("Modify Password Failed");
 	}
 
 	/**
