@@ -11,15 +11,13 @@ public class Product {
 	private String time;
 	private int c_id;
 	private String c_name;
+	private int cp_count;
 	
 	public Product() {
 		
 	}
 
-	
-
-	public Product(int id, String name, double oldprice, double nowprice, String image, String description,
-			int discount, String time, int c_id, String c_name) {
+	public Product(int id, String name, double oldprice, double nowprice, String image, String description, int discount, String time, int c_id, String c_name, int cp_count) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -31,8 +29,8 @@ public class Product {
 		this.time = time;
 		this.c_id = c_id;
 		this.c_name = c_name;
+		this.cp_count = cp_count;
 	}
-
 
 
 	public int getId() {
@@ -113,6 +111,14 @@ public class Product {
 
 	public void setC_name(String c_name) {
 		this.c_name = c_name;
+	}
+
+	public int getCp_count() {
+		return cp_count;
+	}
+
+	public void setCp_count(int cp_count) {
+		this.cp_count = cp_count;
 	}
 	
 	

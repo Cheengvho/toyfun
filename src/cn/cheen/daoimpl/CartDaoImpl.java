@@ -54,16 +54,33 @@ public class CartDaoImpl implements CartDao {
 	public boolean AddCartProduct(int u_id, String username, int p_id) {
 		int i = 0;
 		boolean succeed = false;
-		String sql = "insert into cart(u_id,username,p_id) values(?,?,?)";
+		int cp_count = 0;
+		String selectsql = "select * from cart where u_id=? and username=? and p_id=?";
+		String insertcountsql = "insert into cart(cp_count) values(?)";
+		String insertsql = "insert into cart(u_id,username,p_id) values(?,?,?)";
 		try {
 			conn = Conn.getConnection();
-			pstmt  = conn.prepareStatement(sql);
-			pstmt.setInt(1, u_id);
-			pstmt.setString(2, username);
-			pstmt.setInt(3, p_id);
-			i = pstmt.executeUpdate();
-			if(i > 0) {
-				succeed = true;
+			pstmt  = conn.prepareStatement(selectsql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				cp_count = rs.getInt("cp_count");
+				cp_count++;
+				pstmt = null;
+				pstmt = conn.prepareStatement(insertcountsql);
+				pstmt.setInt(1, cp_count);
+				i = pstmt.executeUpdate();
+				if(i>0) {
+					succeed = true;
+				} 
+			} else {
+				pstmt  = conn.prepareStatement(insertsql);
+				pstmt.setInt(1, u_id);
+				pstmt.setString(2, username);
+				pstmt.setInt(3, p_id);
+				i = pstmt.executeUpdate();
+				if(i > 0) {
+					succeed = true;
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -105,8 +122,25 @@ public class CartDaoImpl implements CartDao {
 
 	@Override
 	public boolean UpdateCartProduct(int u_id, String username, int p_id) {
-		// TODO Auto-generated method stub
-		return false;
+		int i = 0;
+		boolean succeed = false;
+		int cp_count = 0;
+		String sql = "update cart set cp_count=? where u_id=? and username=? and p_id=?";
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, cp_count);
+			pstmt.setInt(2, u_id);
+			pstmt.setString(3, username);
+			pstmt.setInt(4, p_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage().toString());
+		} finally {
+			Conn.release(conn);
+			Conn.release(pstmt);
+		}
+		return succeed;
 	}
 
 }

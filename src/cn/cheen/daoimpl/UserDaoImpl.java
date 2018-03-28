@@ -9,6 +9,7 @@ import cn.cheen.dao.UserDao;
 import cn.cheen.daomain.User;
 import cn.cheen.utils.Conn;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class UserDaoImpl implements UserDao {
@@ -42,7 +43,7 @@ public class UserDaoImpl implements UserDao {
 				user.setCity(rs.getString("u_city"));
 				user.setPoscode(rs.getString("u_poscode"));
 				user.setImg(rs.getString("u_img"));
-				System.out.println("用户："+user.getUsername()+" 登录成功！");
+				System.out.println("用户：" + user.getUsername() + " 登录成功！");
 			} else {
 				System.out.println("用户名或者密码错误！");
 			}
@@ -57,6 +58,7 @@ public class UserDaoImpl implements UserDao {
 		return user;
 	}
 
+//	通过用户名查找用户
 	@Override
 	public User FindUserByUsername(String username) {
 
@@ -93,7 +95,8 @@ public class UserDaoImpl implements UserDao {
 		}
 		return user;
 	}
-
+	
+//	根据用户名删除用户
 	@Override
 	public boolean DeleteUserByUsername(String username) {
 		int i = 0;
@@ -123,13 +126,33 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public boolean UpdateUserByUsername(String username) {
+	public boolean UpdateUserByUsername(User user) {
 		int i = 0;
 		boolean succeed = false;
-		// TODO Auto-generated method stub
+		String sql = "update user ser u_name=? and u_email=? and u_phone=? and u_city=? and u_address=? and u_poscode=? where username=?";
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getName());
+			pstmt.setString(2, user.getEmail());
+			pstmt.setString(3, user.getPhone());
+			pstmt.setString(4, user.getCity());
+			pstmt.setString(5, user.getAddress());
+			pstmt.setString(6, user.getPoscode());
+			pstmt.setString(7, user.getUsername());
+			i = pstmt.executeUpdate();
+			if(i>0) {
+				succeed = true;
+			}
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage().toString());
+		}
 		return succeed;
 	}
 
+//	用户注册
 	@Override
 	public boolean AddUser(User user) {
 		int i = 0;
@@ -156,6 +179,42 @@ public class UserDaoImpl implements UserDao {
 			Conn.release(pstmt);
 		}
 		return succeed;
+	}
+	
+//	查询用户列表和模糊查询用户列表
+	@Override
+	public Collection<User> FindAllUsers(String likeusername) {
+		Collection<User> users = new ArrayList<User>();
+		String sql = "select * from user where 1=1";
+		String a = " and username like '%" + likeusername + "%'";
+		try {
+			if (likeusername!="" && likeusername!=null) {
+				sql += a;
+			}
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				User user = new User();
+				user.setUsername(rs.getString("username"));
+				user.setName(rs.getString("u_name"));
+				user.setEmail(rs.getString("u_email"));
+				user.setPhone(rs.getString("u_phone"));
+				user.setAddress(rs.getString("u_address"));
+				user.setCity(rs.getString("u_city"));
+				user.setPoscode(rs.getString("u_poscode"));
+				user.setImg(rs.getString("u_img"));
+				users.add(user);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage().toString());
+		} finally {
+			Conn.release(conn);
+			Conn.release(pstmt);
+			Conn.release(rs);
+		}
+		return users;
 	}
 
 }
