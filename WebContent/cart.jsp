@@ -27,6 +27,40 @@
 	.media-object{max-width:200px !important; width:120px; height:auto;}
 </style>	
 
+<script type="text/javascript">
+function selectALLNO() {
+    // 获取要操作的复选框
+    var chooseall=document.getElementById("chooseall");
+    //checked判断是否选中
+    if(chooseall.checked==true)
+    {
+        selectAll();
+    }
+    else
+    {
+        SelectNO();
+    }
+}
+function selectAll() {
+    // 获取要操作的复选框
+    var productChose=document.getElementsByName("productChose");
+    //checked判断是否选中
+    for(var x=0;x<productChose.length;x++)
+    {
+        var productChoseValue=productChose[x];
+        productChoseValue.checked=true;
+    }
+}
+function SelectNO(){
+    // 获取要操作的复选框
+    var productChose = document.getElementsByName("productChose");
+     //checked判断是否选中
+   for (var x = 0; x < productChose.length; x++) {
+       var productChoseValue=productChose[x];
+       productChoseValue.checked=false;
+    }
+}
+</script>
 
 
 <!-- 重要，需要保存 GALLERY部分 -->
@@ -157,7 +191,7 @@
 						<form action="#" method="post">
 							<div class="row" style="margin-top:20px;">
 								<div class="cartTop" >
-									<input type="checkbox" id="chooseall"><span>选择全部</span>
+									<input type="checkbox" id="chooseall" onclick="selectALLNO()"><span>选择全部</span>
 								</div>
 								<div class="listBorder">
 									<c:if test="${deletecartms ne null}">
@@ -166,7 +200,7 @@
 									<c:if test="${deletecartms eq null}">
 									<c:forEach var="cartproducts" items="${cartproducts }">
 									<div class="media">
-									  <input type="checkbox" name="">
+									  <input type="checkbox" name="productChose" value="${cartproducts.id }">
 									  <div class="media-left">
 									    <a href="/ProductInfo.jsp?id=${cartproducts.id }">
 									      <img class="media-object" src="/res/images/goods/goods_main/${cartproducts.id }-800x800.jpg" alt="${cartproducts.name }" >
@@ -178,15 +212,20 @@
 									    	<h5 class="media-heading"><span>种类：</span>${cartproducts.c_name }</h5>
 									    </div>
 									    <div class="col-md-3" style="height:120px; text-align:center; ">
-									    	<input type="number" value="1" style="width:70px;" >
+									    	<input type="number" value="${cartproducts.cp_count }" style="width:70px;" >
 									    </div>
-									    <div class="col-md-3" style="height:120px; text-align:right;">
+									    <div class="col-md-1" style="height:120px; text-align:right;">
+									    	<span class="">$${cartproducts.nowprice*cartproducts.cp_count }</span>
+									    </div>
+									    <div class="col-md-2" style="height:120px; text-align:right;">
 									    	<a href="DeleteCart?p_id=${cartproducts.id }" class="btn btn-default" ><span class="glyphicon glyphicon-remove"></span></a>
 									    </div>
 									    
 									  </div>
 									</div>
 									</c:forEach>
+									<input class="btn btn-primary pull-right" type="submit" value="生成订单">
+									<div class="clearfix"></div>
 									</c:if>
 									
 									
