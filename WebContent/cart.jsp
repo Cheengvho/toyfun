@@ -212,10 +212,10 @@ function SelectNO(){
 									    	<h5 class="media-heading"><span>种类：</span>${cartproducts.c_name }</h5>
 									    </div>
 									    <div class="col-md-3" style="height:120px; text-align:center; ">
-									    	<input type="number" value="${cartproducts.cp_count }" style="width:70px;" >
+									    	<input type="number" id="cartproducts.cp_count" value="${cartproducts.cp_count }" style="width:70px;" >
 									    </div>
 									    <div class="col-md-1" style="height:120px; text-align:right;">
-									    	<span class="">$${cartproducts.nowprice*cartproducts.cp_count }</span>
+									    	<span>$</span><span class="">${cartproducts.nowprice*cartproducts.cp_count }</span>
 									    </div>
 									    <div class="col-md-2" style="height:120px; text-align:right;">
 									    	<a href="DeleteCart?p_id=${cartproducts.id }" class="btn btn-default" ><span class="glyphicon glyphicon-remove"></span></a>

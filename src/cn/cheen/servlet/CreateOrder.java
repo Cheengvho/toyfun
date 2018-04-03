@@ -36,6 +36,7 @@ public class CreateOrder extends HttpServlet {
 		for (int i = 0; i < p_id_temp.length; i++) {
 			p_id[i] = Integer.parseInt(p_id_temp[i]);
 		}
+		
 //		需要用户信息、总价、订单id（手动生成）、
 		boolean succeed;
 	}
