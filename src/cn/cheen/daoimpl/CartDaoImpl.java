@@ -55,15 +55,16 @@ public class CartDaoImpl implements CartDao {
 	}
 
 	@Override
-	public boolean AddCartProduct(int u_id, String username, int p_id) {
+	public boolean AddCartProduct(int u_id, String username, int p_id, double nowprice) {
 		int i = 0;
 		boolean succeed = false;
 		int cp_count = 0;
+//		查询购物车中当前是否含有该商品
 		String selectsql = "select * from cart where u_id="+u_id+" and username='"+username+"' and p_id="+p_id;
 //		已有的商品增加数量
 		String updatecountsql = "";
 //		没有的购物车商品新增一条数据
-		String insertsql = "insert into cart(u_id,username,p_id,cp_count) values(?,?,?,?)";
+		String insertsql = "insert into cart(u_id,username,p_id,cp_count,cp_price) values(?,?,?,?,?)";
 		try {
 			conn = Conn.getConnection();
 			pstmt  = conn.prepareStatement(selectsql);
@@ -71,7 +72,7 @@ public class CartDaoImpl implements CartDao {
 			if(rs.next()) {
 				cp_count = rs.getInt("cp_count");
 				cp_count++;
-				updatecountsql = "update cart set cp_count="+cp_count+" where u_id="+u_id+" and username='"+username+"' and p_id="+p_id;
+				updatecountsql = "update cart set cp_count="+cp_count+" where u_id="+u_id+" and username='"+username+"' and p_id="+p_id+" and cp_price="+nowprice;
 				pstmt = null;
 				pstmt = conn.prepareStatement(updatecountsql);
 				i = pstmt.executeUpdate();
@@ -85,6 +86,7 @@ public class CartDaoImpl implements CartDao {
 				pstmt.setString(2, username);
 				pstmt.setInt(3, p_id);
 				pstmt.setInt(4, cp_count);
+				pstmt.setDouble(5, nowprice);
 				i = pstmt.executeUpdate();
 				if(i > 0) {
 					succeed = true;

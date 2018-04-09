@@ -160,7 +160,7 @@
 									<p class="productInfoInt">${productInfo[0].description }</p>
 									<div class="productInfoBtnCol">
 										<a class="btn btn-lg btn-default" onclick="">Buy</a>
-										<a href="/AddCart?p_id=${productInfo[0].id }" class="btn btn-lg btn-theme-primary" onclick="">Add to Cart</a>
+										<a href="/AddCart?p_id=${productInfo[0].id }&nowprice=${productInfo[0].nowprice}" class="btn btn-lg btn-theme-primary" onclick="">Add to Cart</a>
 									</div>
 								</div>
 							</div>

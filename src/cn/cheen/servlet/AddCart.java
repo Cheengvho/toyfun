@@ -33,6 +33,8 @@ public class AddCart extends HttpServlet {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		CartDaoImpl dao = new CartDaoImpl();
 		int p_id = Integer.parseInt(request.getParameter("p_id"));
+//		System.out.println(p_id);
+		double nowprice = Double.parseDouble(request.getParameter("nowprice"));
 		User user = (User) request.getSession().getAttribute("user");
 		int u_id = 0;
 		String username = null;
@@ -40,7 +42,7 @@ public class AddCart extends HttpServlet {
 			u_id = user.getId();
 			username = user.getUsername();
 //			System.out.println("userID:"+user.getId());
-			boolean succeed = dao.AddCartProduct(u_id, username, p_id);
+			boolean succeed = dao.AddCartProduct(u_id, username, p_id, nowprice);
 			if (succeed) {
 				request.setAttribute("addms","<font color='green'>添加购物车成功</font><a href='Products.jsp' class='btn btn-primary'>返回商城</a>");
 			} else {

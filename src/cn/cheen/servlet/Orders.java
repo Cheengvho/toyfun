@@ -1,7 +1,8 @@
 package cn.cheen.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,19 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.cheen.daoimpl.OrderDaoImpl;
+import cn.cheen.daomain.Order;
 import cn.cheen.daomain.User;
 
 /**
- * Servlet implementation class CreateOrder
+ * Servlet implementation class Orders
  */
-@WebServlet("/CreateOrder")
-public class CreateOrder extends HttpServlet {
+@WebServlet("/Orders.jsp")
+public class Orders extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreateOrder() {
+    public Orders() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,23 +33,16 @@ public class CreateOrder extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
 		OrderDaoImpl dao = new OrderDaoImpl();
-		String[] p_id_temp =  request.getParameterValues("productChose");
-		int[] p_id = new int[p_id_temp.length];
+		Collection<Order> orders = new ArrayList<Order>();
 		User user = (User) request.getSession().getAttribute("user");
-		for (int i = 0; i < p_id_temp.length; i++) {
-			p_id[i] = Integer.parseInt(p_id_temp[i]);
+		int u_id = 0;
+		if(user != null) {
+			u_id = user.getId();
+			orders = dao.selectAllOrder(u_id);
 		}
-		boolean success = dao.createOrder(user, p_id);
-//		需要用户信息、总价、订单id（手动生成）、
-		if(success) {
-			System.out.println("Creating Order Succeed");
-			out.println("Creating Order Succeed");
-		} else {
-			System.out.println("Creating Order Failed");
-			out.println("Creating Order Failed");
-		}
+		request.setAttribute("orders", orders);
+		request.getRequestDispatcher("orders.jsp").forward(request, response);
 	}
 
 	/**

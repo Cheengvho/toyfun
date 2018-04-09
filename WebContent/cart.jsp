@@ -188,7 +188,7 @@ function SelectNO(){
 					
 					<!-- 中间内容 -->
 					<div class="container">
-						<form action="#" method="post">
+						<form action="CreateOrder" method="post">
 							<div class="row" style="margin-top:20px;">
 								<div class="cartTop" >
 									<input type="checkbox" id="chooseall" onclick="selectALLNO()"><span>选择全部</span>

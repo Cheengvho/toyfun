@@ -7,6 +7,7 @@ public class Order {
 	private String city;
 	private String name;
 	private String phone;
+	private String email;
 	private String address;
 	private String poscode;
 	private int u_id;
@@ -14,7 +15,7 @@ public class Order {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Order(String id, double totalPrice, String time, String city, String name, String phone, String address, String poscode, int u_id) {
+	public Order(String id, double totalPrice, String time, String city, String name, String phone, String email, String address, String poscode, int u_id) {
 		super();
 		this.id = id;
 		this.totalPrice = totalPrice;
@@ -22,6 +23,7 @@ public class Order {
 		this.city = city;
 		this.name = name;
 		this.phone = phone;
+		this.email = email;
 		this.address = address;
 		this.poscode = poscode;
 		this.u_id = u_id;
@@ -62,6 +64,12 @@ public class Order {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getAddress() {
 		return address;
 	}
@@ -80,6 +88,10 @@ public class Order {
 	public void setU_id(int u_id) {
 		this.u_id = u_id;
 	}
+	
+	
+	
+	
 	
 	
 }

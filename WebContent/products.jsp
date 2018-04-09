@@ -185,7 +185,7 @@
 							        <p><a href="#">${product.name }</a></p>
 							        <div class="btn-group">
 							        	<a href="" class="btn btn-theme-primary" >Buy</a>
-							        	<a href="/AddCart?p_id=${product.id }" class="btn btn-default" >Add to Cart</a>
+							        	<a href="/AddCart?p_id=${product.id }&nowprice=${product.nowprice}" class="btn btn-default" >Add to Cart</a>
 							        </div>
 							      </div>
 							    </div>
