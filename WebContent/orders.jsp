@@ -157,25 +157,15 @@
 					<div class="container">
 						<div class="row" style="margin-top:20px;">
 							<table class="table table-striped table-hover orderTable">
-								<tr>
-									<td class="col-md-2">2018-03-20 15:32:00</td>
-									<td class="col-md-6"><span>订单号：</span><a href="#">20180320154200</a></td>
-									<td class="col-md-1"></td>
-									<td class="tdFunction col-md-3" style="text-align:right;"><a href="#">查看订单</a><a href="#">取消订单</a><a href="#">删除订单</a></td>
-								</tr>
-								<%-- <c:forEach var="" items=""> --%>
+								<c:forEach var="orders" items="${orders }">
 									<tr>
-										<td><a href="#"><img alt="" src="/res/images/goods/goods_main/1-800x800.jpg"></a></td>
-										<td><a href="#"><span class="spanLineHeight">鲁班锁</span></a></td>
-										<td><span class="spanLineHeightPL">x2</span></td>
-										<td style="text-align:right;"><span class="spanLineHeight">用户名</span><span class="spanLineHeight">&nbsp;&nbsp;|&nbsp;&nbsp;</span><span class="spanLineHeight">$666.00</span></td>
+										<td class="col-md-3"><span>订单号：</span><a href="/OrderInfo.jsp?o_id=${orders.id }">${orders.id }</a></td>
+										<td class="col-md-5">${orders.time }</td>
+										<td class="col-md-1"><span>$${orders.totalPrice }</span></td>
+										<td class="tdFunction col-md-3" style="text-align:right;"><a href="/OrderInfo.jsp?o_id=${orders.id }">查看订单</a><a href="#">取消订单</a><a href="#">删除订单</a></td>
 									</tr>
-								<%-- </c:forEach> --%>
-								
+								</c:forEach>
 							</table>
-							
-							
-							
 						</div>
 					</div>
 					

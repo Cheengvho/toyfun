@@ -3,6 +3,7 @@ package cn.cheen.dao;
 import java.util.Collection;
 
 import cn.cheen.daomain.Order;
+import cn.cheen.daomain.Product;
 import cn.cheen.daomain.User;
 
 public interface OrderDao {
@@ -11,4 +12,5 @@ public interface OrderDao {
 	public boolean updateOrder(String id);
 	public Collection<Order> selectAllOrder(int u_id);
 	public Order selectSingleOrder(String id);
+	public Collection<Product> selectOrderitem(String o_id);
 }

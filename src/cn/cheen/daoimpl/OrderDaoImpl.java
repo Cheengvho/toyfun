@@ -11,7 +11,10 @@ import java.util.Date;
 import java.sql.SQLException;
 
 import cn.cheen.dao.OrderDao;
+
 import cn.cheen.daomain.Order;
+import cn.cheen.daomain.Orderitem;
+import cn.cheen.daomain.Product;
 import cn.cheen.daomain.User;
 import cn.cheen.utils.Conn;
 
@@ -148,7 +151,7 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public Order selectSingleOrder(String id) {
 		Order orderInfo = new Order();
-		String sql = "select * from order where o_id="+id;
+		String sql = "select * from orders where o_id='"+id+"'";
 		try {
 			conn = Conn.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -170,6 +173,63 @@ public class OrderDaoImpl implements OrderDao {
 			System.out.println(e.getMessage().toString());
 		}
 		return orderInfo;
+	}
+
+	@Override
+	public Collection<Product> selectOrderitem(String o_id) {
+		PreparedStatement pstmt2 = null;
+		ResultSet rs2 = null;
+		Collection<Product> products = new ArrayList<Product>();
+		
+		String sql_orderitem = "select * from orderitem where o_id='"+o_id+"'";
+		String sql_product = "";
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql_orderitem);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Product product = new Product();
+				Orderitem orderitem = new Orderitem();
+//				System.out.println(rs.getInt("item_id"));
+				orderitem.setItem_id(rs.getInt("item_id"));
+				orderitem.setItem_count(rs.getInt("item_count"));
+				orderitem.setItem_totalPrice(rs.getDouble("item_totalprice"));
+				orderitem.setP_id(rs.getInt("p_id"));
+				orderitem.setO_id(rs.getString("o_id"));
+				product.setOrderitem(orderitem);
+				sql_product = "select * from product where p_id="+rs.getInt("p_id");
+				pstmt2 = conn.prepareStatement(sql_product);
+				rs2 = pstmt2.executeQuery();
+				if(rs2.next()) {
+					product.setId(rs2.getInt("p_id"));
+					product.setName(rs2.getString("p_name"));
+					product.setOldprice(rs2.getDouble("old_price"));
+					product.setNowprice(rs2.getDouble("now_price"));
+					product.setImage(rs2.getString("p_image"));
+					product.setDescription(rs2.getString("p_description"));
+					product.setDiscount(rs2.getInt("discount"));
+					product.setTime(rs2.getString("p_time"));
+					product.setC_id(rs2.getInt("c_id"));
+					
+				}
+				products.add(product);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage().toString());
+		} finally {
+			Conn.release(conn);
+			Conn.release(pstmt);
+			Conn.release(pstmt2);
+			Conn.release(rs);
+			Conn.release(rs2);
+		}
+		
+		
+		return products;
 	}
 
 }

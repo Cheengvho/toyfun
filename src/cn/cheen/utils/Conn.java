@@ -10,6 +10,7 @@ public class Conn {
 			String url="jdbc:mysql://localhost:3306/toyfun?useUnicode=true&amp;characterEncoding=UTF-8";
 			String user="root";
 			String password="x5";
+//			String password="123456";
 			conn=DriverManager.getConnection(url,user,password);
 			
 		}catch(Exception e){
