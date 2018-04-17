@@ -96,7 +96,7 @@
 							</c:forEach>
 						</ul></li>
 					<li id="menu-item-1978" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1978"><a href="/Cart.jsp">Cart</a></li>
-					<li id="menu-item-722" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-722"><a href="#">Orders</a></li>
+					<li id="menu-item-722" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-722"><a href="/Orders.jsp">Orders</a></li>
 					<c:if test="${user eq null}">
 						<li id="menu-item-49" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-49"><a href="login.jsp">To Login</a></li>
 					</c:if>

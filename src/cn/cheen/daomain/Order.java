@@ -1,5 +1,7 @@
 package cn.cheen.daomain;
 
+import java.util.Collection;
+
 public class Order {
 	private String id;
 	private double totalPrice;
@@ -11,11 +13,12 @@ public class Order {
 	private String address;
 	private String poscode;
 	private int u_id;
+	private Collection<Product> products;
 	public Order() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Order(String id, double totalPrice, String time, String city, String name, String phone, String email, String address, String poscode, int u_id) {
+	public Order(String id, double totalPrice, String time, String city, String name, String phone, String email, String address, String poscode, int u_id, Collection<Product> products) {
 		super();
 		this.id = id;
 		this.totalPrice = totalPrice;
@@ -27,6 +30,7 @@ public class Order {
 		this.address = address;
 		this.poscode = poscode;
 		this.u_id = u_id;
+		this.products = products;
 	}
 	public String getId() {
 		return id;
@@ -87,6 +91,12 @@ public class Order {
 	}
 	public void setU_id(int u_id) {
 		this.u_id = u_id;
+	}
+	public Collection<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(Collection<Product> products) {
+		this.products = products;
 	}
 	
 	

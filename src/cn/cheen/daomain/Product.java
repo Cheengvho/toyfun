@@ -1,5 +1,7 @@
 package cn.cheen.daomain;
 
+import java.util.Collection;
+
 public class Product {
 	private int id;
 	private String name;

@@ -129,7 +129,7 @@ function SelectNO(){
 						href="/Cart.jsp">Cart</a></li>
 					<li id="menu-item-722"
 						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-722"><a
-						href="#">Orders</a></li>
+						href="/Orders.jsp">Orders</a></li>
 					<c:if test="${user eq null}">
 						<li id="menu-item-49"
 						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-49"><a
