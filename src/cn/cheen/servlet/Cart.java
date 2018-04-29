@@ -47,7 +47,7 @@ public class Cart extends HttpServlet {
 			request.getRequestDispatcher("/cart.jsp").forward(request, response);  
 		} else {
 			request.setAttribute("loginms", "要使用购物车，请先登录");
-			request.getRequestDispatcher("/login.jsp").forward(request, response);  
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
 		}
 	}
 
