@@ -106,7 +106,7 @@
 						<ul class="sub-menu">
 							<li id="menu-item-281"
 								class="menu-item menu-item-type-custom menu-item-object-custom menu-item-281"><a
-								target="_blank" href="#">Mine</a></li>
+								target="_blank" href="/Mine?username=${user.username }">Mine</a></li>
 							<li id="menu-item-67"
 								class="menu-item menu-item-type-post_type menu-item-object-page menu-item-67"><a
 								href="/loginout.jsp">Login Out</a></li>

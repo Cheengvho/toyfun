@@ -10,6 +10,7 @@ public interface OrderDao {
 	public boolean createOrder(User user,int p_id[]);
 	public boolean deleteOrder(String id);
 	public boolean updateOrder(String id);
+	public Collection<Order> selectAllOrderAdmin();
 	public Collection<Order> selectAllOrder(int u_id);
 	public Order selectSingleOrder(String id);
 	public Collection<Product> selectOrderitem(String o_id);

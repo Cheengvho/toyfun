@@ -18,7 +18,7 @@
 	<ul class="leftBar">
 		<li><a href="/ManageUser.jsp" target="adminMainFrame">用户管理</a></li>
 		<li><a href="/ManageProduct.jsp" target="adminMainFrame">商品管理</a></li>
-		<li><a href="/ManageCart.jsp" target="adminMainFrame">购物车管理</a></li>
+		<!-- <li><a href="/ManageCart.jsp" target="adminMainFrame">购物车管理</a></li> -->
 		<li><a href="/ManageOrder.jsp" target="adminMainFrame">订单管理</a></li>
 	</ul>
 </div>

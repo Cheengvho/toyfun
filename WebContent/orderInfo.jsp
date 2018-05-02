@@ -141,6 +141,20 @@
 			</div>
 			</section> <!-- 中间内容 -->
 			<div class="container">
+				<div class="row" style="margin-top:20px;">
+					<table class="table table-hover">
+						<tr>
+							<td>收货人：${orderInfo.name }</td>
+							<td>手机号：${orderInfo.phone }</td>
+							<td>邮箱：${orderInfo.email }</td>
+						</tr>
+						<tr>
+							<td>城市：${orderInfo.city }</td>
+							<td>邮编：${orderInfo.poscode }</td>
+							<td>详细地址：${orderInfo.address }</td>
+						</tr>
+					</table>
+				</div>
 				<div class="row" style="margin-top: 20px;">
 					<table class="table table-striped table-hover orderTable">
 						

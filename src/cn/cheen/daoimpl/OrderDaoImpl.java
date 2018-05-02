@@ -23,6 +23,7 @@ public class OrderDaoImpl implements OrderDao {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 
+//	创建订单
 	@Override
 	public boolean createOrder(User user, int[] p_id) {
 		Date date = new Date();
@@ -103,18 +104,73 @@ public class OrderDaoImpl implements OrderDao {
 		return success;
 	}
 
+//	删除订单
 	@Override
 	public boolean deleteOrder(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean success = false;
+		int count1 = 0;
+		int count2 = 0;
+		String sql_orders = "delete from orders where o_id='"+id+"'"; 
+		String sql_orderitems = "delete from orderitem where o_id='"+id+"'";
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql_orders);
+			count1 = pstmt.executeUpdate();
+			pstmt = conn.prepareStatement(sql_orderitems);
+			count2 = pstmt.executeUpdate();
+			if(count1 > 0 && count2 > 0) {
+				success = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage().toString());
+		} finally {
+			Conn.release(conn);
+			Conn.release(pstmt);
+		}
+		return success;
 	}
 
+//	修改订单
 	@Override
 	public boolean updateOrder(String id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	@Override
+	public Collection<Order> selectAllOrderAdmin(){
+		Collection<Order> orders = new ArrayList<Order>();
+		String sql = "select * from orders";
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Order order = new Order();
+				order.setId(rs.getString("o_id"));
+				order.setTotalPrice(rs.getDouble("total_price"));
+				order.setTime(rs.getString("o_time"));
+				order.setCity(rs.getString("city"));
+				order.setName(rs.getString("name"));
+				order.setPhone(rs.getString("phone"));
+				order.setEmail(rs.getString("email"));
+				order.setAddress(rs.getString("address"));
+				order.setPoscode(rs.getString("poscode"));
+				order.setU_id(rs.getInt("u_id"));
+				orders.add(order);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage().toString());
+		} finally {
+			Conn.release(conn);
+			Conn.release(pstmt);
+			Conn.release(rs);
+		}
+		return orders;
+	}
+	
+//	查询单个用户订单列表
 	@Override
 	public Collection<Order> selectAllOrder(int u_id) {
 		Collection<Order> orders = new ArrayList<Order>();
@@ -148,6 +204,7 @@ public class OrderDaoImpl implements OrderDao {
 		return orders;
 	}
 
+//	根据订单ID查询订单信息
 	@Override
 	public Order selectSingleOrder(String id) {
 		Order orderInfo = new Order();
@@ -175,6 +232,7 @@ public class OrderDaoImpl implements OrderDao {
 		return orderInfo;
 	}
 
+//	根据订单ID查询订单中商品
 	@Override
 	public Collection<Product> selectOrderitem(String o_id) {
 		PreparedStatement pstmt2 = null;
