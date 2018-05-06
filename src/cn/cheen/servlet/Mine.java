@@ -29,6 +29,7 @@ public class Mine extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("UTF-8");
 		String username = request.getParameter("username");
 		UserDaoImpl dao = new UserDaoImpl();
 		User user = dao.FindUserByUsername(username);
