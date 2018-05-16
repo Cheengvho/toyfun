@@ -369,13 +369,10 @@
 					<a class="back-top-top" href="#page" title="Back To Top"><i
 						class="fa fa-angle-double-up wow flash" data-wow-duration="2s"></i></a>
 				</div>
-				<div class="col-sm-6">
-					<p style="text-align: left">© ToyFun. </p>
-				</div>
-				<div class="col-sm-6">
-
+				<div class="col-sm-12">
+					<p style="text-align: center"><a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备18013005号  </a>© ToyFun.</p>
 					<p
-						style="text-align: right; color: white; text-decoration: underline">
+						style="text-align: center; color: white; text-decoration: underline">
 						<a href="contact-us.jsp">Contact Us</a>
 					</p>
 				</div>

@@ -89,7 +89,7 @@
 						</ul></li>
 					<li id="menu-item-1978"
 						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1978"><a
-						href="#">Cart</a></li>
+						href="/Cart.jsp">Cart</a></li>
 					<li id="menu-item-722"
 						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-722"><a
 						href="/Orders.jsp">Orders</a></li>
@@ -105,7 +105,7 @@
 						<ul class="sub-menu">
 							<li id="menu-item-281"
 								class="menu-item menu-item-type-custom menu-item-object-custom menu-item-281"><a
-								target="_blank" href="#">Mine</a></li>
+								target="_blank" href="/Mine?username=${user.username }">Mine</a></li>
 							<li id="menu-item-67"
 								class="menu-item menu-item-type-post_type menu-item-object-page menu-item-67"><a
 								href="/loginout.jsp">Login Out</a></li>
@@ -222,13 +222,10 @@
 					<a class="back-top-top" href="#page" title="Back To Top"><i
 						class="fa fa-angle-double-up wow flash" data-wow-duration="2s"></i></a>
 				</div>
-				<div class="col-sm-6">
-					<p style="text-align: left">© ToyFun. </p>
-				</div>
-				<div class="col-sm-6">
-
+				<div class="col-sm-12">
+					<p style="text-align: center"><a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备18013005号  </a>© ToyFun.</p>
 					<p
-						style="text-align: right; color: white; text-decoration: underline">
+						style="text-align: center; color: white; text-decoration: underline">
 						<a href="contact-us.jsp">Contact Us</a>
 					</p>
 				</div>

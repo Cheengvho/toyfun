@@ -88,24 +88,43 @@
 				<a href="#0" id="nav-toggle">Menu<span></span></a>
 				<nav id="site-navigation" class="main-navigation" role="navigation">
 				<ul class="onepress-menu">
-					<li id="menu-item-966" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-966"><a href="/Index.jsp">Home</a></li>
-					<li id="menu-item-51" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-51"><a href="/Products.jsp">Products</a>
+					<li id="menu-item-966"
+						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-966"><a
+						href="/Index.jsp">Home</a></li>
+					<li id="menu-item-51"
+						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-51"><a
+						href="/Products.jsp">Products</a>
 						<ul class="sub-menu">
 							<c:forEach var="classify" items="${classify }">
-								<li id="menu-item-54" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-54"><a href="/Products.jsp?c_id=${classify.id }">${classify.name }</a></li>
+								<li id="menu-item-54"
+									class="menu-item menu-item-type-post_type menu-item-object-page menu-item-54"><a
+									href="/Products.jsp?c_id=${classify.id }">${classify.name }</a></li>
 							</c:forEach>
 						</ul></li>
-					<li id="menu-item-1978" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1978"><a href="/Cart.jsp">Cart</a></li>
-					<li id="menu-item-722" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-722"><a href="/Orders.jsp">Orders</a></li>
+					<li id="menu-item-1978"
+						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1978"><a
+						href="/Cart.jsp">Cart</a></li>
+					<li id="menu-item-722"
+						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-722"><a
+						href="/Orders.jsp">Orders</a></li>
 					<c:if test="${user eq null}">
-						<li id="menu-item-49" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-49"><a href="login.jsp">To Login</a></li>
+						<li id="menu-item-49"
+						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-49"><a
+						href="login.jsp">To Login</a></li>
 					</c:if>
 					<c:if test="${user ne null}">
-						<li id="menu-item-71" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-71"><a href="#">${user.username }</a>
-							<ul class="sub-menu">
-								<li id="menu-item-281" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-281"><a target="_blank" href="#">Mine</a></li>
-								<li id="menu-item-67" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-67"><a href="/loginout.jsp">Login Out</a></li>
-							</ul></li>
+						<li id="menu-item-71"
+						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-71"><a
+						href="#">${user.username }</a>
+						<ul class="sub-menu">
+							<li id="menu-item-281"
+								class="menu-item menu-item-type-custom menu-item-object-custom menu-item-281"><a
+								target="_blank" href="/Mine?username=${user.username }">Mine</a></li>
+							<li id="menu-item-67"
+								class="menu-item menu-item-type-post_type menu-item-object-page menu-item-67"><a
+								href="/loginout.jsp">Login Out</a></li>
+						</ul>
+					</li>
 					</c:if>
 				</ul>
 				</nav>
@@ -207,14 +226,13 @@
 		<div class="site-info">
 			<div class="container">
 				<div class="btt">
-					<a class="back-top-top" href="#page" title="Back To Top"><i class="fa fa-angle-double-up wow flash" data-wow-duration="2s"></i></a>
+					<a class="back-top-top" href="#page" title="Back To Top"><i
+						class="fa fa-angle-double-up wow flash" data-wow-duration="2s"></i></a>
 				</div>
-				<div class="col-sm-6">
-					<p style="text-align: left">© ToyFun.</p>
-				</div>
-				<div class="col-sm-6">
-
-					<p style="text-align: right; color: white; text-decoration: underline">
+				<div class="col-sm-12">
+					<p style="text-align: center"><a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备18013005号  </a>© ToyFun.</p>
+					<p
+						style="text-align: center; color: white; text-decoration: underline">
 						<a href="contact-us.jsp">Contact Us</a>
 					</p>
 				</div>

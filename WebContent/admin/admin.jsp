@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>后台管理系统|ToyFun</title>
 </head>
 <frameset rows="50px,*,50px" cols="*" frameborder="no" framespacing="0" border="0">
 	<frame src="/admin/adminTop.jsp" name="adminTopFrame" id="adminTopFrame">

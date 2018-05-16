@@ -13,6 +13,9 @@ body {
 }
 </style>
 </head>
-<body>test adminBottom.jsp
+<body>
+<div style="text-align:center;">
+	<a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备18013005号</a>
+</div>
 </body>
 </html>

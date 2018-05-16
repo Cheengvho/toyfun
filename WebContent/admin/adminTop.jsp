@@ -11,12 +11,13 @@
 </style>
 </head>
 <body>
-	<nav>
+	<div style="margin-left:50px; margin-top:10px; margin-bottom:10px; font-size:21px;">ToyFun后台管理系统</div>
+	<!-- <nav>
 	<ul class="navspan">
 		<li><a href="adminMain.jsp" target="adminMainFrame">首页</a></li>
 		<li><a href="#">注销</a></li>
 		<div class="clearfix"></div>
 	</ul>
-	</nav>
+	</nav> -->
 </body>
 </html>
