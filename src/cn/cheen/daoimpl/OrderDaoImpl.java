@@ -77,7 +77,7 @@ public class OrderDaoImpl implements OrderDao {
 				}
 
 			}
-			insertsql = "insert into orders(o_id,total_price,o_time,city,name,phone,address,poscode,u_id) values(?,?,?,?,?,?,?,?,?)";
+			insertsql = "insert into orders(o_id,total_price,o_time,city,name,phone,email,address,poscode,u_id) values(?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(insertsql);
 			pstmt.setString(1, o_id);
 			pstmt.setDouble(2, sum_total_price);
@@ -85,9 +85,11 @@ public class OrderDaoImpl implements OrderDao {
 			pstmt.setString(4, user.getCity());
 			pstmt.setString(5, user.getName());
 			pstmt.setString(6, user.getPhone());
-			pstmt.setString(7, user.getAddress());
-			pstmt.setString(8, user.getPoscode());
-			pstmt.setInt(9, user.getId());
+			pstmt.setString(7, user.getEmail());
+			pstmt.setString(8, user.getAddress());
+			pstmt.setString(9, user.getPoscode());
+			System.out.println(user.getPoscode());
+			pstmt.setInt(10, user.getId());
 			successCount = pstmt.executeUpdate();
 			if (successCount > 0) {
 				success = true;

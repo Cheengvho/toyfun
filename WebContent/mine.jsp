@@ -36,7 +36,7 @@
 					<label>邮箱</label> <input class="form-control" type="text" name="email" value="${userInfo.email }" placeholder="邮箱" />
 				</div>
 				<div class="form-group col-md-4">
-					<label>邮编</label> <input class="form-control" type="text" name="poscode" value="${userInfo.email }" placeholder="邮编" />
+					<label>邮编</label> <input class="form-control" type="text" name="poscode" value="${userInfo.poscode }" placeholder="邮编" />
 				</div>
 				<div class="form-group col-md-4">
 					<label>详细地址</label> <input class="form-control" type="text" name="address" value="${userInfo.address }" placeholder="详细地址" />
